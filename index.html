@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CVRO Succession Planning - Workshop Playbook</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { 'ashley-orange':'#F68C2C','ashley-orange-dark':'#E67A1A' }
+        }
+      }
+    }
+  </script>
+  <style>
+    body{box-sizing:border-box}
+    .fade-in{animation:fadeIn .3s ease-in}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .timer-pulse{animation:pulse 1s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+  </style>
+</head>
+<body class="bg-gray-50 font-sans">
+  <!-- Header -->
+  <header class="bg-white shadow-sm border-b sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center space-x-8">
+          <div class="flex-shrink-0">
+            <div class="w-10 h-10 bg-ashley-orange rounded-lg flex items-center justify-center">
+              <span class="text-white font-bold text-lg">C</span>
+            </div>
+          </div>
+          <nav class="hidden md:flex space-x-6">
+            <button onclick="showTab(event,'home')" class="nav-tab text-gray-700 hover:text-ashley-orange px-3 py-2 text-sm font-medium border-b-2 border-ashley-orange">Home</button>
+            <button onclick="showTab(event,'framework')" class="nav-tab text-gray-700 hover:text-ashley-orange px-3 py-2 text-sm font-medium">Framework (6 Steps)</button>
+            <button onclick="showTab(event,'tools-main')" class="nav-tab text-gray-700 hover:text-ashley-orange px-3 py-2 text-sm font-medium">Tools & Templates</button>
+            <button onclick="showTab(event,'workshops')" class="nav-tab text-gray-700 hover:text-ashley-orange px-3 py-2 text-sm font-medium">Workshops</button>
+            <button onclick="showTab(event,'metrics')" class="nav-tab text-gray-700 hover:text-ashley-orange px-3 py-2 text-sm font-medium">Metrics & Governance</button>
+            <button onclick="showTab(event,'faq')" class="nav-tab text-gray-700 hover:text-ashley-orange px-3 py-2 text-sm font-medium">FAQ</button>
+          </nav>
+        </div>
+        <div class="flex items-center space-x-4">
+          <label class="flex items-center cursor-pointer">
+            <span class="text-sm text-gray-700 mr-2">Facilitator View</span>
+            <div class="relative">
+              <input type="checkbox" id="facilitatorToggle" class="sr-only" onchange="toggleFacilitatorView()">
+              <div id="toggleTrack" class="block bg-gray-300 w-14 h-8 rounded-full"></div>
+              <div class="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition"></div>
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CTA Row -->
+  <div class="bg-ashley-orange text-white py-3 sticky top-16 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap justify-center md:justify-end items-center gap-3">
+      <button class="bg-white text-ashley-orange px-4 py-2 rounded-xl text-sm font-medium hover:bg-gray-100 transition-colors">📥 Download All Templates</button>
+      <button class="bg-white text-ashley-orange px-4 py-2 rounded-xl text-sm font-medium hover:bg-gray-100 transition-colors">📱 Open QR Board</button>
+      <button class="bg-white text-ashley-orange px-4 py-2 rounded-xl text-sm font-medium hover:bg-gray-100 transition-colors">📧 Contact AHR</button>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- HOME -->
+    <div id="home-tab" class="tab-content">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">CVRO Succession Planning – Workshop Playbook</h1>
+        <p class="text-xl text-gray-600 mb-2">Build leadership continuity, readiness, and visibility.</p>
+        <p class="text-lg text-gray-500 mb-8">Xây dựng tính liên tục lãnh đạo, mức độ sẵn sàng và tính minh bạch.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 mb-12">
+        <div class="bg-white rounded-xl shadow-sm border p-6 hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-ashley-orange rounded-lg flex items-center justify-center mb-4"><span class="text-white text-xl">📊</span></div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Executive Overview</h3>
+          <p class="text-sm text-gray-500 mb-2">Tổng quan điều hành</p>
+          <p class="text-gray-600">Strategic framework and governance model for leadership succession planning.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-sm border p-6 hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-ashley-orange rounded-lg flex items-center justify-center mb-4"><span class="text-white text-xl">🛠️</span></div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Hands-on Tools</h3>
+          <p class="text-sm text-gray-500 mb-2">Bộ công cụ thực hành</p>
+          <p class="text-gray-600">Ready-to-use templates, assessments, and evaluation frameworks.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-sm border p-6 hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-ashley-orange rounded-lg flex items-center justify-center mb-4"><span class="text-white text-xl">🎯</span></div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Step-by-step Workshops</h3>
+          <p class="text-sm text-gray-500 mb-2">Kịch bản workshop theo bước</p>
+          <p class="text-gray-600">Facilitation guides with timers, activities, and discussion prompts.</p>
+        </div>
+      </div>
+      <div class="text-center space-x-4">
+        <button onclick="showTab(event,'workshops')" class="bg-ashley-orange text-white px-6 py-3 rounded-xl font-medium hover:bg-ashley-orange-dark transition-colors">🚀 Start Workshop (60–90')</button>
+        <button onclick="showTab(event,'framework')" class="bg-white text-ashley-orange border-2 border-ashley-orange px-6 py-3 rounded-xl font-medium hover:bg-ashley-orange hover:text-white transition-colors">📋 Framework Stepper</button>
+        <button onclick="showTab(event,'tools-main')" class="bg-white text-ashley-orange border-2 border-ashley-orange px-6 py-3 rounded-xl font-medium hover:bg-ashley-orange hover:text-white transition-colors">📁 Tools & Templates</button>
+      </div>
+    </div>
+
+    <!-- WORKSHOPS -->
+    <div id="workshops-tab" class="tab-content hidden">
+      <div class="mb-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-2">Workshop Flow</h2>
+        <p class="text-gray-600 mb-4">Kịch bản hướng dẫn workshop</p>
+
+        <!-- Duration & Timer -->
+        <div class="bg-white rounded-xl border p-6 mb-6">
+          <h3 class="text-lg font-semibold mb-4">Select Workshop Duration / Chọn thời lượng workshop</h3>
+          <div class="flex gap-4 mb-4">
+            <button onclick="setDuration(event,60)" class="duration-btn bg-ashley-orange text-white px-4 py-2 rounded-xl">60 minutes</button>
+            <button onclick="setDuration(event,75)" class="duration-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-xl">75 minutes</button>
+            <button onclick="setDuration(event,90)" class="duration-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-xl">90 minutes</button>
+          </div>
+          <div class="flex items-center gap-4">
+            <div id="timer-display" class="text-2xl font-bold text-ashley-orange">60:00</div>
+            <button onclick="startTimer()" id="timer-btn" class="bg-green-500 text-white px-4 py-2 rounded-xl hover:bg-green-600">▶️ Start</button>
+            <button onclick="pauseTimer()" class="bg-yellow-500 text-white px-4 py-2 rounded-xl hover:bg-yellow-600">⏸️ Pause</button>
+            <button onclick="resetTimer()" class="bg-red-500 text-white px-4 py-2 rounded-xl hover:bg-red-600">🔄 Reset</button>
+          </div>
+        </div>
+
+        <!-- Agenda -->
+        <div class="space-y-4">
+          <!-- 0–5 -->
+          <div class="bg-white rounded-xl border">
+            <button onclick="toggleAccordion(event,'agenda-1')" class="w-full text-left p-6 flex justify-between items-center hover:bg-gray-50">
+              <div>
+                <h4 class="font-semibold text-gray-900">0–5' Kick-off & Objectives</h4>
+                <p class="text-sm text-gray-500">Khởi động & mục tiêu</p>
+              </div>
+              <span class="accordion-icon text-ashley-orange">▼</span>
+            </button>
+            <div id="agenda-1" class="accordion-content hidden p-6 pt-0 border-t">
+              <div class="space-y-4">
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <h5 class="font-medium text-blue-900 mb-2">Key Messages / Thông điệp chính:</h5>
+                  <ul class="text-sm text-blue-800 space-y-1">
+                    <li>• Welcome and context setting</li>
+                    <li>• Workshop objectives and expected outcomes</li>
+                    <li>• Chào mừng và thiết lập bối cảnh</li>
+                    <li>• Mục tiêu workshop và kết quả mong đợi</li>
+                  </ul>
+                </div>
+                <div class="facilitator-note hidden bg-yellow-50 p-4 rounded-lg">
+                  <h5 class="font-medium text-yellow-900 mb-2">🎯 Facilitator Notes:</h5>
+                  <p class="text-sm text-yellow-800">"Today we'll build a practical succession planning framework that you can implement immediately. No theory - just actionable tools."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5–20 -->
+          <div class="bg-white rounded-xl border">
+            <button onclick="toggleAccordion(event,'agenda-2')" class="w-full text-left p-6 flex justify-between items-center hover:bg-gray-50">
+              <div>
+                <h4 class="font-semibold text-gray-900">5–20' Why Succession Planning</h4>
+                <p class="text-sm text-gray-500">Tại sao cần kế hoạch kế nhiệm</p>
+              </div>
+              <span class="accordion-icon text-ashley-orange">▼</span>
+            </button>
+            <div id="agenda-2" class="accordion-content hidden p-6 pt-0 border-t">
+              <div class="space-y-4">
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <h5 class="font-medium text-blue-900 mb-2">Key Messages:</h5>
+                  <ul class="text-sm text-blue-800 space-y-1">
+                    <li>• Business continuity and risk mitigation</li>
+                    <li>• Talent development and retention</li>
+                    <li>• Tính liên tục kinh doanh và giảm thiểu rủi ro</li>
+                    <li>• Phát triển và giữ chân nhân tài</li>
+                  </ul>
+                </div>
+                <div class="facilitator-note hidden bg-yellow-50 p-4 rounded-lg">
+                  <h5 class="font-medium text-yellow-900 mb-2">🎯 Ask the Room:</h5>
+                  <p class="text-sm text-yellow-800">"What happens when a key leader leaves unexpectedly? Share a real example from your experience."</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg">
+                  <h5 class="font-medium text-green-900 mb-2">📱 Interactive Poll:</h5>
+                  <div class="bg-white p-3 rounded border-2 border-dashed border-green-300 text-center">
+                    <div class="text-4xl mb-2">📱</div>
+                    <p class="text-sm text-green-800">QR Code: "Top succession planning concerns"</p>
+                    <button class="mt-2 bg-green-500 text-white px-3 py-1 rounded text-xs">Generate QR</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 20–40 -->
+          <div class="bg-white rounded-xl border">
+            <button onclick="toggleAccordion(event,'agenda-3')" class="w-full text-left p-6 flex justify-between items-center hover:bg-gray-50">
+              <div>
+                <h4 class="font-semibold text-gray-900">20–40' Step 1 Practice – Critical Roles & Success Profile</h4>
+                <p class="text-sm text-gray-500">Thực hành Bước 1 – Vai trò quan trọng & Hồ sơ thành công</p>
+              </div>
+              <span class="accordion-icon text-ashley-orange">▼</span>
+            </button>
+            <div id="agenda-3" class="accordion-content hidden p-6 pt-0 border-t">
+              <div class="space-y-4">
+                <div class="bg-ashley-orange/10 p-4 rounded-lg">
+                  <h5 class="font-medium text-ashley-orange mb-2">⏱️ Mini-Activity (10 minutes):</h5>
+                  <p class="text-sm text-gray-700 mb-3">Each HoD selects 1–2 roles to evaluate using the Critical Position framework</p>
+                  <div class="flex gap-2 items-center">
+                    <button onclick="startMiniTimer(10)" class="bg-ashley-orange text-white px-3 py-1 rounded text-sm">Start 10' Timer</button>
+                    <div id="mini-timer" class="text-ashley-orange font-bold"></div>
+                  </div>
+                </div>
+                <div class="facilitator-note hidden bg-yellow-50 p-4 rounded-lg">
+                  <h5 class="font-medium text-yellow-900 mb-2">🎯 Transition Line:</h5>
+                  <p class="text-sm text-yellow-800">"Now let's move from theory to practice. You'll use the actual tools you'll implement next week."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /Agenda -->
+      </div>
+    </div>
+
+    <!-- FRAMEWORK -->
+    <div id="framework-tab" class="tab-content hidden">
+      <div class="mb-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-2">6-Step Framework</h2>
+        <p class="text-gray-600 mb-6">6 steps framework of Succession Planning</p>
+
+        <!-- Stepper -->
+        <div class="bg-white rounded-xl border p-6 mb-6">
+          <div class="flex items-center justify-between mb-6">
+            <div id="stepper" class="flex items-center space-x-4">
+              <div class="step-indicator w-8 h-8 bg-ashley-orange text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
+              <div class="step-line w-16 h-1 bg-ashley-orange"></div>
+              <div class="step-indicator w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-sm font-bold">2</div>
+              <div class="step-line w-16 h-1 bg-gray-300"></div>
+              <div class="step-indicator w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-sm font-bold">3</div>
+              <div class="step-line w-16 h-1 bg-gray-300"></div>
+              <div class="step-indicator w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-sm font-bold">4</div>
+              <div class="step-line w-16 h-1 bg-gray-300"></div>
+              <div class="step-indicator w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-sm font-bold">5</div>
+              <div class="step-line w-16 h-1 bg-gray-300"></div>
+              <div class="step-indicator w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-sm font-bold">6</div>
+            </div>
+            <div id="step-counter" class="text-sm text-gray-500">Step 1 of 6</div>
+          </div>
+          <div class="flex gap-2 mb-4">
+            <button onclick="showStep(event,1)" class="step-btn bg-ashley-orange text-white px-3 py-1 rounded text-sm">Step 1</button>
+            <button onclick="showStep(event,2)" class="step-btn bg-gray-200 text-gray-700 px-3 py-1 rounded text-sm">Step 2</button>
+            <button onclick="showStep(event,3)" class="step-btn bg-gray-200 text-gray-700 px-3 py-1 rounded text-sm">Step 3</button>
+            <button onclick="showStep(event,4)" class="step-btn bg-gray-200 text-gray-700 px-3 py-1 rounded text-sm">Step 4</button>
+            <button onclick="showStep(event,5)" class="step-btn bg-gray-200 text-gray-700 px-3 py-1 rounded text-sm">Step 5</button>
+            <button onclick="showStep(event,6)" class="step-btn bg-gray-200 text-gray-700 px-3 py-1 rounded text-sm">Step 6</button>
+          </div>
+        </div>
+
+        <!-- STEP 1 -->
+        <div id="step-1" class="step-content">
+          <div class="bg-white rounded-xl border p-6 mb-6">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">STEP 1: Identify Critical Positions & Define Success Profile</h3>
+            <p class="text-gray-600 mb-6">Xác định vị trí trọng yếu và xây dựng hồ sơ năng lực kế nhiệm</p>
+
+            <!-- Tabs -->
+            <div class="border-b mb-6">
+              <nav class="flex gap-8">
+                <button onclick="showStepTab(event,1,'purpose')" class="s1-tab-btn border-b-2 border-ashley-orange text-ashley-orange py-2 px-1 text-sm font-medium">Purpose</button>
+                <button onclick="showStepTab(event,1,'criteria')" class="s1-tab-btn border-b-2 border-transparent text-gray-500 hover:text-gray-700 py-2 px-1 text-sm font-medium">Criteria Options</button>
+                <button onclick="showStepTab(event,1,'scoring')" class="s1-tab-btn border-b-2 border-transparent text-gray-500 hover:text-gray-700 py-2 px-1 text-sm font-medium">Scoring Guide</button>
+                <button onclick="showStepTab(event,1,'profile')" class="s1-tab-btn border-b-2 border-transparent text-gray-500 hover:text-gray-700 py-2 px-1 text-sm font-medium">Success Profile</button>
+                <button onclick="showStepTab(event,1,'tools')" class="s1-tab-btn border-b-2 border-transparent text-gray-500 hover:text-gray-700 py-2 px-1 text-sm font-medium">Tools</button>
+              </nav>
+            </div>
+
+            <!-- PURPOSE -->
+            <div id="s1-purpose-tab" class="s1-tab">
+              <div class="space-y-4">
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-blue-900 mb-2">Purpose</h4>
+                  <p class="text-blue-800 mb-2">Identify business-critical roles and define the Success Profile for each.</p>
+                  <p class="text-blue-700 text-sm">Xác định vị trí trọng yếu và xây dựng hồ sơ năng lực kế nhiệm.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-4">
+                  <div class="bg-gray-50 p-4 rounded-lg">
+                    <h5 class="font-medium text-gray-900 mb-2">Deliverables</h5>
+                    <ul class="text-sm text-gray-700 space-y-1">
+                      <li>• Critical position inventory</li><li>• Success profiles per role</li>
+                      <li>• Danh sách vị trí quan trọng</li><li>• Hồ sơ thành công theo vai trò</li>
+                    </ul>
+                  </div>
+                  <div class="bg-gray-50 p-4 rounded-lg">
+                    <h5 class="font-medium text-gray-900 mb-2">Stakeholders</h5>
+                    <ul class="text-sm text-gray-700 space-y-1">
+                      <li>• HoDs (Lead)</li><li>• Senior Leadership</li><li>• AHR (Support)</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CRITERIA -->
+            <div id="s1-criteria-tab" class="s1-tab hidden">
+              <div class="space-y-6">
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                  <div class="flex items-center">
+                    <span class="bg-ashley-orange text-white px-2 py-1 rounded text-xs font-bold mr-2">AHR RECOMMENDS</span>
+                    <span class="text-yellow-800 font-medium">Option 2 - CVRO Customized</span>
+                  </div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div class="bg-white border-2 border-gray-200 rounded-lg p-4">
+                    <h4 class="font-semibold text-gray-900 mb-3">Option 1 – Standard (Weighted)</h4>
+                    <div class="space-y-2 text-sm">
+                      <div class="flex justify-between"><span>Urgency</span><span class="font-medium">20%</span></div>
+                      <div class="flex justify-between"><span>Impact</span><span class="font-medium">30%</span></div>
+                      <div class="flex justify-between"><span>Skills</span><span class="font-medium">30%</span></div>
+                      <div class="flex justify-between"><span>Internal Talent</span><span class="font-medium">15%</span></div>
+                      <div class="flex justify-between"><span>External Difficulty</span><span class="font-medium">5%</span></div>
+                    </div>
+                  </div>
+                  <div class="bg-ashley-orange/10 border-2 border-ashley-orange rounded-lg p-4">
+                    <h4 class="font-semibold text-ashley-orange mb-3">Option 2 – CVRO Customized (Equal 20% each)</h4>
+                    <div class="space-y-2 text-sm text-gray-700">
+                      <div class="flex justify-between"><span>Succession Urgency & Internal Readiness</span><span class="font-medium">20%</span></div>
+                      <div class="flex justify-between"><span>Cost Efficiency</span><span class="font-medium">20%</span></div>
+                      <div class="flex justify-between"><span>Leadership & Culture Impact</span><span class="font-medium">20%</span></div>
+                      <div class="flex justify-between"><span>Strategic Contribution</span><span class="font-medium">20%</span></div>
+                      <div class="flex justify-between"><span>Skill Scarcity & Market Competition</span><span class="font-medium">20%</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SCORING -->
+            <div id="s1-scoring-tab" class="s1-tab hidden">
+              <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded">
+                  <h4 class="font-bold text-red-900 mb-1">1. Critical Role</h4>
+                  <p class="text-red-800 text-sm mb-2">≥4.2 points</p>
+                  <p class="text-red-700 text-xs">Immediate succession planning required</p>
+                </div>
+                <div class="bg-orange-50 border-l-4 border-orange-500 p-4 rounded">
+                  <h4 class="font-bold text-orange-900 mb-1">2. High Priority</h4>
+                  <p class="text-orange-800 text-sm mb-2">3.5–4.19 points</p>
+                  <p class="text-orange-700 text-xs">Active development needed</p>
+                </div>
+                <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded">
+                  <h4 class="font-bold text-yellow-900 mb-1">3. Moderate</h4>
+                  <p class="text-yellow-800 text-sm mb-2">2.8–3.49 points</p>
+                  <p class="text-yellow-700 text-xs">Monitor and plan</p>
+                </div>
+                <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded">
+                  <h4 class="font-bold text-green-900 mb-1">4. Low Priority</h4>
+                  <p class="text-green-800 text-sm mb-2">&lt;2.8 points</p>
+                  <p class="text-green-700 text-xs">Standard development</p>
+                </div>
+              </div>
+              <div class="mt-4 bg-blue-50 p-4 rounded-lg">
+                <p class="text-blue-800 text-sm"><strong>Note:</strong> HoDs may flex classifications based on business context. Document rationale for any adjustments.</p>
+              </div>
+            </div>
+
+            <!-- PROFILE -->
+            <div id="s1-profile-tab" class="s1-tab hidden">
+              <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <h5 class="font-medium text-gray-900 mb-2">Competency Criteria</h5>
+                  <p class="text-sm text-gray-700">Use Performance Evaluation System clusters.</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <h5 class="font-medium text-gray-900 mb-2">Job Qualifications</h5>
+                  <p class="text-sm text-gray-700">Consolidate JD: education, experience, certifications, tools.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- TOOLS -->
+            <div id="s1-tools-tab" class="s1-tab hidden">
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white border rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3"><span class="text-green-600 text-lg">📊</span></div>
+                    <div><h4 class="font-semibold text-gray-900">Critical Position Evaluation Form</h4><p class="text-sm text-gray-500">Excel template with scoring matrix</p></div>
+                  </div>
+                  <button class="w-full bg-ashley-orange text-white py-2 px-4 rounded-xl hover:bg-ashley-orange-dark transition-colors">📥 Download .xlsx</button>
+                </div>
+                <div class="bg-white border rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3"><span class="text-blue-600 text-lg">👤</span></div>
+                    <div><h4 class="font-semibold text-gray-900">Success Profile Template 2025</h4><p class="text-sm text-gray-500">Competency and qualification framework</p></div>
+                  </div>
+                  <button class="w-full bg-ashley-orange text-white py-2 px-4 rounded-xl hover:bg-ashley-orange-dark transition-colors">📥 Download .xlsx</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div id="step-2" class="step-content hidden">
+          <div class="bg-white rounded-xl border p-6 mb-6">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">STEP 2: Identify Talent Pool (5-Stage Filtering)</h3>
+            <p class="text-gray-600 mb-6">Đề cử & Ứng tuyển & Phân bổ xem xét</p>
+
+            <div class="border-b mb-6">
+              <nav class="flex gap-8">
+                <button onclick="showStepTab(event,2,'round1')" class="s2-tab-btn border-b-2 border-ashley-orange text-ashley-orange py-2 px-1 text-sm font-medium">Round 1 – HoD Nomination</button>
+                <button onclick="showStepTab(event,2,'round2')" class="s2-tab-btn border-b-2 border-transparent text-gray-500 hover:text-gray-700 py-2 px-1 text-sm font-medium">Round 2 – Self-Application</button>
+                <button onclick="showStepTab(event,2,'round3')" class="s2-tab-btn border-b-2 border-transparent text-gray-500 hover:text-gray-700 py-2 px-1 text-sm font-medium">Round 3 – HoD Matching</button>
+                <button onclick="showStepTab(event,2,'files')" class="s2-tab-btn border-b-2 border-transparent text-gray-500 hover:text-gray-700 py-2 px-1 text-sm font-medium">Tools</button>
+              </nav>
+            </div>
+
+            <div id="s2-round1-tab" class="s2-tab">
+              <div class="space-y-4">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <p class="text-sm text-gray-700"><b>Input:</b> 9-Box (latest). Groups → <b>Green Zone</b> priority; <b>Center Blue Zone</b> optional.</p>
+                </div>
+                <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded">
+                  <p class="text-sm text-yellow-800">Provide <b>written rationale</b>; avoid discriminatory justifications.</p>
+                </div>
+              </div>
+            </div>
+            <div id="s2-round2-tab" class="s2-tab hidden">
+              <ul class="list-disc pl-6 text-sm text-gray-700 space-y-1">
+                <li>Basic Info</li>
+                <li>Succession Preferences (≥1 same dept; cross-dept if relevant)</li>
+                <li>Reasons per choice</li>
+                <li>Role-specific: Managerial (leadership + motivate example) / Non-managerial (technical + SBI); optional self-leadership</li>
+                <li>Mobility & Availability</li>
+                <li>Career Aspiration & Motivation (1–3y)</li>
+              </ul>
+              <div class="mt-4 flex gap-3">
+                <button class="bg-ashley-orange text-white px-4 py-2 rounded-xl">Open Application Form</button>
+                <button class="bg-white border px-4 py-2 rounded-xl">QR to Apply</button>
+              </div>
+            </div>
+            <div id="s2-round3-tab" class="s2-tab hidden">
+              <ul class="list-disc pl-6 text-sm text-gray-700 space-y-1">
+                <li>Lists: <b>Internal</b> · <b>Incoming</b> · <b>Outgoing</b></li>
+                <li>Assess alignment; view cross-dept moves as development opportunities</li>
+                <li>Endorsed candidates → Step 3</li>
+                <li>Not selected → Thank-you note + encouragement</li>
+              </ul>
+            </div>
+            <div id="s2-files-tab" class="s2-tab hidden">
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white border rounded-lg p-4"><h4 class="font-semibold">Candidate_9Box_Roster_2025.xlsx</h4><p class="text-sm text-gray-500 mb-3">Roster by 9-Box groups</p><button class="w-full bg-ashley-orange text-white py-2 rounded-xl">📥 Download</button></div>
+                <div class="bg-white border rounded-lg p-4"><h4 class="font-semibold">Pre_NominationChecklist_HoD.docx</h4><p class="text-sm text-gray-500 mb-3">Checklist for HoD</p><button class="w-full bg-ashley-orange text-white py-2 rounded-xl">📥 Download</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div id="step-3" class="step-content hidden">
+          <div class="bg-white rounded-xl border p-6 mb-6">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">STEP 3: Gap Assessment</h3>
+            <p class="text-gray-600 mb-6">Đánh giá khoảng cách năng lực</p>
+
+            <div class="border-b mb-6">
+              <nav class="flex gap-8">
+                <button onclick="showStepTab(event,3,'system')" class="s3-tab-btn border-b-2 border-ashley-orange text-ashley-orange py-2 px-1 text-sm font-medium">System Setup</button>
+                <button onclick="showStepTab(event,3,'self')" class="s3-tab-btn border-b-2 border-transparent text-gray-500 hover:text-gray-700 py-2 px-1 text-sm font-medium">Self-Assessment</button>
+                <button onclick="showStepTab(event,3,'manager')" class="s3-tab-btn border-b-2 border-transparent text-gray-500 hover:text-gray-700 py-2 px-1 text-sm font-medium">Manager Validation</button>
+                <button onclick="showStepTab(event,3,'summary')" class="s3-tab-btn border-b-2 border-transparent text-gray-500 hover:text-gray-700 py-2 px-1 text-sm font-medium">Gap Summary & Dashboard</button>
+                <button onclick="showStepTab(event,3,'announce')" class="s3-tab-btn border-b-2 border-transparent text-gray-500 hover:text-gray-700 py-2 px-1 text-sm font-medium">Talent Pool Announcement</button>
+              </nav>
+            </div>
+
+            <div id="s3-system-tab" class="s3-tab">
+              <p class="text-sm text-gray-700">Standalone mirror module; self-assessment, manager validation, role-based access; mock-data UAT.</p>
+              <ul class="list-disc pl-6 text-sm text-gray-600 mt-2"><li>System_Module_Feature_List.xlsx</li><li>UI_Wireframe_Sample.pdf</li></ul>
+            </div>
+            <div id="s3-self-tab" class="s3-tab hidden">
+              <p class="text-sm text-gray-700">Scale 1–5; 1–2 describe gaps; 3 meets + improve; 4–5 provide SBI examples; map to job qualifications.</p>
+            </div>
+            <div id="s3-manager-tab" class="s3-tab hidden">
+              <p class="text-sm text-gray-700"><b>Readiness:</b> Ready Now (≤6m) · Ready Soon (≤2y) · Development Needed (&gt;2y) · Not Ready.<br/>Comments visible to candidates; readiness visible to AHR & HoD.</p>
+            </div>
+            <div id="s3-summary-tab" class="s3-tab hidden">
+              <ul class="list-disc pl-6 text-sm text-gray-700 space-y-1">
+                <li>Template_Gap_Analysis_Sheet.xlsx</li><li>Gap_Analysis_Summary_Report_DeptName.xlsx</li><li>PowerBI_Gap_Tracking_Layout.pdf</li>
+              </ul>
+            </div>
+            <div id="s3-announce-tab" class="s3-tab hidden">
+              <ul class="list-disc pl-6 text-sm text-gray-700 space-y-1">
+                <li>Ready Now / Ready Soon → Talent Pool</li>
+                <li>Development Needed → Talent Watch</li>
+                <li>Not Ready → Thank-you note with feedback pointers</li>
+              </ul>
+              <p class="text-sm text-gray-600 mt-2">Email_Talent_Pool_Confirmation.docx</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div id="step-4" class="step-content hidden">
+          <div class="bg-white rounded-xl border p-6 mb-6">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">STEP 4: IDP Execution – Closing the Gap</h3>
+            <p class="text-gray-600 mb-6">Thực thi IDP – thu hẹp khoảng cách</p>
+
+            <div class="border-b mb-6">
+              <nav class="flex gap-8">
+                <button onclick="showStepTab(event,4,'design')" class="s4-tab-btn border-b-2 border-ashley-orange text-ashley-orange py-2 px-1 text-sm font-medium">Design Flow</button>
+                <button onclick="showStepTab(event,4,'702010')" class="s4-tab-btn border-b-2 border-transparent text-gray-500 hover:text-gray-700 py-2 px-1 text-sm font-medium">70-20-10</button>
+                <button onclick="showStepTab(event,4,'track')" class="s4-tab-btn border-b-2 border-transparent text-gray-500 hover:text-gray-700 py-2 px-1 text-sm font-medium">Tracking & Review</button>
+                <button onclick="showStepTab(event,4,'files')" class="s4-tab-btn border-b-2 border-transparent text-gray-500 hover:text-gray-700 py-2 px-1 text-sm font-medium">Tools</button>
+              </nav>
+            </div>
+
+            <div id="s4-design-tab" class="s4-tab">
+              <p class="text-sm text-gray-700">AHR workshop → Successor drafts IDP → Approvals (Leader, HoD) → Quarterly updates.</p>
+            </div>
+            <div id="s4-702010-tab" class="s4-tab hidden">
+              <ul class="list-disc pl-6 text-sm text-gray-700 space-y-1">
+                <li>70 Doing – projects, acting role, rotation</li>
+                <li>20 Others – coaching, peer groups, mentoring</li>
+                <li>10 Formal – courses, certifications</li>
+              </ul>
+            </div>
+            <div id="s4-track-tab" class="s4-tab hidden">
+              <p class="text-sm text-gray-700">Quarterly updates; leader audit; notify changes (aspiration/strategy). Power BI portfolio view.</p>
+            </div>
+            <div id="s4-files-tab" class="s4-tab hidden">
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white border rounded-lg p-4"><h4 class="font-semibold">IDP_Template_Successor.xlsx</h4><p class="text-sm text-gray-500 mb-3">Successor IDP template</p><button class="w-full bg-ashley-orange text-white py-2 rounded-xl">📥 Download</button></div>
+                <div class="bg-white border rounded-lg p-4"><h4 class="font-semibold">IDP_Review_Checklist_Leader.docx</h4><p class="text-sm text-gray-500 mb-3">Leader review checklist</p><button class="w-full bg-ashley-orange text-white py-2 rounded-xl">📥 Download</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 5 -->
+        <div id="step-5" class="step-content hidden">
+          <div class="bg-white rounded-xl border p-6 mb-6">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">STEP 5: Talent Review Presentation</h3>
+            <p class="text-gray-600 mb-6">Báo cáo tiến độ & phản biện hội đồng</p>
+
+            <div class="border-b mb-6">
+              <nav class="flex gap-8">
+                <button onclick="showStepTab(event,5,'format')" class="s5-tab-btn border-b-2 border-ashley-orange text-ashley-orange py-2 px-1 text-sm font-medium">Format</button>
+                <button onclick="showStepTab(event,5,'benefits')" class="s5-tab-btn border-b-2 border-transparent text-gray-500 hover:text-gray-700 py-2 px-1 text-sm font-medium">Benefits</button>
+                <button onclick="showStepTab(event,5,'files')" class="s5-tab-btn border-b-2 border-transparent text-gray-500 hover:text-gray-700 py-2 px-1 text-sm font-medium">Tools</button>
+              </nav>
+            </div>
+
+            <div id="s5-format-tab" class="s5-tab">
+              <p class="text-sm text-gray-700">Annual (suggest Aug). Successor presents IDP progress → panel feedback → revise IDP → update dashboard.</p>
+            </div>
+            <div id="s5-benefits-tab" class="s5-tab hidden">
+              <ul class="list-disc pl-6 text-sm text-gray-700 space-y-1">
+                <li>Priority learning opportunities</li>
+                <li>Cross-functional visibility</li>
+                <li>Strategic projects participation</li>
+                <li>Eligible for Asia Domination (General Staff)</li>
+              </ul>
+            </div>
+            <div id="s5-files-tab" class="s5-tab hidden">
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white border rounded-lg p-4"><h4 class="font-semibold">Talent_Review_Presentation_Template.pptx</h4><p class="text-sm text-gray-500 mb-3">Presentation deck</p><button class="w-full bg-ashley-orange text-white py-2 rounded-xl">📥 Download</button></div>
+                <div class="bg-white border rounded-lg p-4"><h4 class="font-semibold">Talent_Review_Panel_Feedback_Form.docx</h4><p class="text-sm text-gray-500 mb-3">Panel feedback form</p><button class="w-full bg-ashley-orange text-white py-2 rounded-xl">📥 Download</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 6 -->
+        <div id="step-6" class="step-content hidden">
+          <div class="bg-white rounded-xl border p-6 mb-6">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">STEP 6: Continuous Review & Yearly Refresh</h3>
+            <p class="text-gray-600 mb-6">Theo dõi liên tục & làm mới hằng năm</p>
+
+            <div class="border-b mb-6">
+              <nav class="flex gap-8">
+                <button onclick="showStepTab(event,6,'kpi')" class="s6-tab-btn border-b-2 border-ashley-orange text-ashley-orange py-2 px-1 text-sm font-medium">KPIs</button>
+                <button onclick="showStepTab(event,6,'feedback')" class="s6-tab-btn border-b-2 border-transparent text-gray-500 hover:text-gray-700 py-2 px-1 text-sm font-medium">Feedback & Improvement</button>
+                <button onclick="showStepTab(event,6,'survey')" class="s6-tab-btn border-b-2 border-transparent text-gray-500 hover:text-gray-700 py-2 px-1 text-sm font-medium">Survey</button>
+              </nav>
+            </div>
+
+            <div id="s6-kpi-tab" class="s6-tab">
+              <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <h4 class="font-medium text-gray-900 mb-2">Semi-Annual</h4>
+                  <ul class="list-disc pl-6 text-sm text-gray-700 space-y-1">
+                    <li>% critical roles with ≥1 successor</li>
+                    <li>% on-time IDP updates</li>
+                    <li>% IDP actions completed</li>
+                    <li>Participation rate (bootcamps, coaching…)</li>
+                  </ul>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <h4 class="font-medium text-gray-900 mb-2">Annual</h4>
+                  <ul class="list-disc pl-6 text-sm text-gray-700 space-y-1">
+                    <li>Internal fill rate for critical roles</li>
+                    <li>% successors advancing readiness</li>
+                    <li>Talent Pool retention (12–18m)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div id="s6-feedback-tab" class="s6-tab hidden">
+              <p class="text-sm text-gray-700">Collect successor & HoD feedback; evaluate training effectiveness; refresh pool post Y/E; communicate updates; tune tools & process.</p>
+            </div>
+            <div id="s6-survey-tab" class="s6-tab hidden">
+              <div class="bg-white border rounded-lg p-4"><h4 class="font-semibold">Talent_Program_Feedback_Survey_Form</h4><p class="text-sm text-gray-500 mb-3">Post-review survey</p><button class="w-full bg-ashley-orange text-white py-2 rounded-xl">Open</button></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="flex justify-between">
+          <button onclick="previousStep()" id="prev-btn" class="bg-gray-300 text-gray-500 px-6 py-2 rounded-xl cursor-not-allowed">← Previous</button>
+          <button onclick="nextStep()" id="next-btn" class="bg-ashley-orange text-white px-6 py-2 rounded-xl hover:bg-ashley-orange-dark">Next →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOOLS MAIN -->
+    <div id="tools-main-tab" class="tab-content hidden">
+      <div class="mb-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-2">Tools & Templates</h2>
+        <p class="text-gray-600 mb-6">Công cụ & Mẫu biểu</p>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white border rounded-xl p-6 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 bg-ashley-orange rounded-lg flex items-center justify-center mb-4"><span class="text-white text-xl">📊</span></div>
+            <h3 class="font-semibold text-gray-900 mb-2">Critical Position Evaluation</h3>
+            <p class="text-sm text-gray-500 mb-4">Scoring matrix for role prioritization</p>
+            <button class="w-full bg-ashley-orange text-white py-2 px-4 rounded-xl hover:bg-ashley-orange-dark transition-colors">📥 Download Excel</button>
+          </div>
+          <div class="bg-white border rounded-xl p-6 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mb-4"><span class="text-white text-xl">👤</span></div>
+            <h3 class="font-semibold text-gray-900 mb-2">Success Profile Template</h3>
+            <p class="text-sm text-gray-500 mb-4">Competency framework builder</p>
+            <button class="w-full bg-ashley-orange text-white py-2 px-4 rounded-xl hover:bg-ashley-orange-dark transition-colors">📥 Download Excel</button>
+          </div>
+          <div class="bg-white border rounded-xl p-6 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mb-4"><span class="text-white text-xl">📋</span></div>
+            <h3 class="font-semibold text-gray-900 mb-2">Gap Assessment Tool</h3>
+            <p class="text-sm text-gray-500 mb-4">Readiness evaluation matrix</p>
+            <button class="w-full bg-ashley-orange text-white py-2 px-4 rounded-xl hover:bg-ashley-orange-dark transition-colors">📥 Download Excel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- METRICS & GOVERNANCE -->
+    <div id="metrics-tab" class="tab-content hidden">
+      <div class="mb-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-2">Metrics & Governance</h2>
+        <p class="text-gray-600 mb-6">Chỉ số & Quản trị</p>
+
+        <div class="bg-white rounded-xl border p-6 mb-6">
+          <h3 class="text-xl font-semibold mb-4">Key Performance Indicators</h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="space-y-4">
+              <div class="bg-gray-50 p-4 rounded-lg"><h4 class="font-medium text-gray-900 mb-2">Succession Readiness Rate</h4><p class="text-sm text-gray-600">% of critical roles with ready successors</p></div>
+              <div class="bg-gray-50 p-4 rounded-lg"><h4 class="font-medium text-gray-900 mb-2">Internal Fill Rate</h4><p class="text-sm text-gray-600">% of leadership roles filled internally</p></div>
+            </div>
+            <div class="space-y-4">
+              <div class="bg-gray-50 p-4 rounded-lg"><h4 class="font-medium text-gray-900 mb-2">Time to Fill</h4><p class="text-sm text-gray-600">Average days to fill critical positions</p></div>
+              <div class="bg-gray-50 p-4 rounded-lg"><h4 class="font-medium text-gray-900 mb-2">Development Progress</h4><p class="text-sm text-gray-600">% completion of successor IDPs</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl border p-6">
+          <h3 class="text-xl font-semibold mb-4">RACI (Lite)</h3>
+          <div class="overflow-x-auto">
+            <table class="min-w-full border text-sm">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-4 py-2 border">Step</th>
+                  <th class="px-4 py-2 border">AHR</th>
+                  <th class="px-4 py-2 border">HoD</th>
+                  <th class="px-4 py-2 border">Leader</th>
+                  <th class="px-4 py-2 border">Successor</th>
+                  <th class="px-4 py-2 border">StratEx</th>
+                  <th class="px-4 py-2 border">SysDev</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="px-4 py-2 border">1</td><td class="px-4 py-2 border">A</td><td class="px-4 py-2 border">R</td><td class="px-4 py-2 border">C</td><td class="px-4 py-2 border">I</td><td class="px-4 py-2 border">C</td><td class="px-4 py-2 border">I</td></tr>
+                <tr><td class="px-4 py-2 border">2</td><td class="px-4 py-2 border">A</td><td class="px-4 py-2 border">R</td><td class="px-4 py-2 border">C</td><td class="px-4 py-2 border">I</td><td class="px-4 py-2 border">I</td><td class="px-4 py-2 border">I</td></tr>
+                <tr><td class="px-4 py-2 border">3</td><td class="px-4 py-2 border">A</td><td class="px-4 py-2 border">R</td><td class="px-4 py-2 border">R</td><td class="px-4 py-2 border">C</td><td class="px-4 py-2 border">C</td><td class="px-4 py-2 border">R</td></tr>
+                <tr><td class="px-4 py-2 border">4</td><td class="px-4 py-2 border">A</td><td class="px-4 py-2 border">C</td><td class="px-4 py-2 border">R</td><td class="px-4 py-2 border">R</td><td class="px-4 py-2 border">C</td><td class="px-4 py-2 border">I</td></tr>
+                <tr><td class="px-4 py-2 border">5</td><td class="px-4 py-2 border">A</td><td class="px-4 py-2 border">C</td><td class="px-4 py-2 border">C</td><td class="px-4 py-2 border">R</td><td class="px-4 py-2 border">I</td><td class="px-4 py-2 border">I</td></tr>
+                <tr><td class="px-4 py-2 border">6</td><td class="px-4 py-2 border">A</td><td class="px-4 py-2 border">C</td><td class="px-4 py-2 border">C</td><td class="px-4 py-2 border">I</td><td class="px-4 py-2 border">R</td><td class="px-4 py-2 border">I</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div id="faq-tab" class="tab-content hidden">
+      <div class="mb-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-2">Frequently Asked Questions</h2>
+        <p class="text-gray-600 mb-6">Câu hỏi thường gặp</p>
+
+        <div class="space-y-4">
+          <div class="bg-white rounded-xl border">
+            <button onclick="toggleAccordion(event,'faq-1')" class="w-full text-left p-6 flex justify-between items-center hover:bg-gray-50">
+              <h4 class="font-semibold text-gray-900">How often should we update succession plans?</h4>
+              <span class="accordion-icon text-ashley-orange">▼</span>
+            </button>
+            <div id="faq-1" class="accordion-content hidden p-6 pt-0 border-t">
+              <p class="text-gray-600">Succession plans should be reviewed quarterly and updated annually, or whenever there are significant organizational changes.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl border">
+            <button onclick="toggleAccordion(event,'faq-2')" class="w-full text-left p-6 flex justify-between items-center hover:bg-gray-50">
+              <h4 class="font-semibold text-gray-900">What if we don't have internal successors ready?</h4>
+              <span class="accordion-icon text-ashley-orange">▼</span>
+            </button>
+            <div id="faq-2" class="accordion-content hidden p-6 pt-0 border-t">
+              <p class="text-gray-600">Focus on accelerated development programs, external partnerships, and interim leadership solutions while building internal capability.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // ===== State
+    let currentStep = 1;
+    let currentDuration = 60;
+    let timerInterval, timeRemaining = 3600;
+    let miniTimerInterval, miniTimeRemaining = 0;
+    let facilitatorMode = false;
+
+    // ===== Tabs (top navbar)
+    function showTab(e, tabName){
+      document.querySelectorAll('.tab-content').forEach(t=>t.classList.add('hidden'));
+      const el = document.getElementById(tabName+'-tab');
+      if(el) el.classList.remove('hidden');
+      document.querySelectorAll('.nav-tab').forEach(btn=>btn.classList.remove('border-b-2','border-ashley-orange'));
+      if(e && e.currentTarget){ e.currentTarget.classList.add('border-b-2','border-ashley-orange'); }
+      // Scroll to top of main
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+
+    // ===== Facilitator view
+    function toggleFacilitatorView(){
+      facilitatorMode = !facilitatorMode;
+      const toggle = document.getElementById('facilitatorToggle');
+      const track = document.getElementById('toggleTrack');
+      const dot = track.parentElement.querySelector('.dot');
+      const notes = document.querySelectorAll('.facilitator-note');
+      if(facilitatorMode){
+        track.classList.remove('bg-gray-300'); track.classList.add('bg-ashley-orange');
+        dot.style.transform='translateX(24px)';
+        notes.forEach(n=>n.classList.remove('hidden'));
+      }else{
+        track.classList.remove('bg-ashley-orange'); track.classList.add('bg-gray-300');
+        dot.style.transform='translateX(0)';
+        notes.forEach(n=>n.classList.add('hidden'));
+      }
+    }
+
+    // ===== Accordion
+    function toggleAccordion(e,id){
+      const content = document.getElementById(id);
+      const btn = e.currentTarget;
+      const icon = btn.querySelector('.accordion-icon');
+      if(content.classList.contains('hidden')){
+        content.classList.remove('hidden'); content.classList.add('fade-in');
+        if(icon) icon.textContent='▲';
+      }else{
+        content.classList.add('hidden');
+        if(icon) icon.textContent='▼';
+      }
+    }
+
+    // ===== Workshop timer
+    function setDuration(e,minutes){
+      currentDuration = minutes;
+      timeRemaining = minutes*60;
+      updateTimerDisplay();
+      document.querySelectorAll('.duration-btn').forEach(b=>{
+        b.classList.remove('bg-ashley-orange','text-white');
+        b.classList.add('bg-gray-200','text-gray-700');
+      });
+      if(e && e.currentTarget){
+        e.currentTarget.classList.remove('bg-gray-200','text-gray-700');
+        e.currentTarget.classList.add('bg-ashley-orange','text-white');
+      }
+    }
+    function startTimer(){
+      if(timerInterval) clearInterval(timerInterval);
+      timerInterval = setInterval(()=>{
+        timeRemaining--; updateTimerDisplay();
+        if(timeRemaining<=0){ clearInterval(timerInterval); alert('Workshop time completed!'); }
+      },1000);
+      const btn = document.getElementById('timer-btn');
+      btn.textContent='⏸️ Running';
+      btn.classList.remove('bg-green-500','hover:bg-green-600');
+      btn.classList.add('bg-yellow-500','hover:bg-yellow-600');
+    }
+    function pauseTimer(){
+      if(timerInterval){ clearInterval(timerInterval); timerInterval=null; }
+      const btn = document.getElementById('timer-btn');
+      btn.textContent='▶️ Start';
+      btn.classList.remove('bg-yellow-500','hover:bg-yellow-600');
+      btn.classList.add('bg-green-500','hover:bg-green-600');
+    }
+    function resetTimer(){
+      if(timerInterval) clearInterval(timerInterval);
+      timeRemaining = currentDuration*60; updateTimerDisplay();
+      const btn = document.getElementById('timer-btn');
+      btn.textContent='▶️ Start';
+      btn.classList.remove('bg-yellow-500','hover:bg-yellow-600');
+      btn.classList.add('bg-green-500','hover:bg-green-600');
+    }
+    function updateTimerDisplay(){
+      const m = Math.floor(timeRemaining/60).toString().padStart(2,'0');
+      const s = (timeRemaining%60).toString().padStart(2,'0');
+      const el = document.getElementById('timer-display');
+      el.textContent = `${m}:${s}`;
+      if(timeRemaining<=300){ el.classList.add('timer-pulse','text-red-500'); } else { el.classList.remove('timer-pulse','text-red-500'); }
+    }
+
+    // ===== Mini timers
+    function startMiniTimer(minutes){
+      if(miniTimerInterval) clearInterval(miniTimerInterval);
+      miniTimeRemaining = minutes*60;
+      const label = document.getElementById('mini-timer');
+      miniTimerInterval = setInterval(()=>{
+        miniTimeRemaining--;
+        const mm = Math.floor(miniTimeRemaining/60);
+        const ss = (miniTimeRemaining%60).toString().padStart(2,'0');
+        label.textContent = `${mm}:${ss}`;
+        if(miniTimeRemaining<=0){ clearInterval(miniTimerInterval); label.textContent='Time up!'; label.classList.add('text-red-500','timer-pulse'); }
+      },1000);
+    }
+
+    // ===== Step navigation
+    function updateStepperUI(stepNum){
+      const indicators = document.querySelectorAll('#stepper .step-indicator');
+      const lines = document.querySelectorAll('#stepper .step-line');
+      indicators.forEach((ind,i)=>{
+        if(i < stepNum){ ind.classList.remove('bg-gray-300','text-gray-600'); ind.classList.add('bg-ashley-orange','text-white'); }
+        else { ind.classList.remove('bg-ashley-orange','text-white'); ind.classList.add('bg-gray-300','text-gray-600'); }
+      });
+      lines.forEach((ln,i)=>{
+        if(i < stepNum-1){ ln.classList.remove('bg-gray-300'); ln.classList.add('bg-ashley-orange'); }
+        else { ln.classList.remove('bg-ashley-orange'); ln.classList.add('bg-gray-300'); }
+      });
+      document.getElementById('step-counter').textContent = `Step ${stepNum} of 6`;
+      const prevBtn = document.getElementById('prev-btn');
+      const nextBtn = document.getElementById('next-btn');
+      if(stepNum===1){
+        prevBtn.disabled = true;
+        prevBtn.classList.add('cursor-not-allowed','bg-gray-300','text-gray-500');
+        prevBtn.classList.remove('bg-ashley-orange','text-white');
+      }else{
+        prevBtn.disabled = false;
+        prevBtn.classList.remove('cursor-not-allowed','bg-gray-300','text-gray-500');
+        prevBtn.classList.add('bg-ashley-orange','text-white');
+      }
+      nextBtn.textContent = (stepNum===6)? 'Complete' : 'Next →';
+    }
+    function showStep(e,stepNum){
+      currentStep = stepNum;
+      document.querySelectorAll('.step-content').forEach(s=>s.classList.add('hidden'));
+      const pane = document.getElementById(`step-${stepNum}`);
+      if(pane) pane.classList.remove('hidden');
+
+      // Update buttons style
+      document.querySelectorAll('.step-btn').forEach(b=>{
+        b.classList.remove('bg-ashley-orange','text-white');
+        b.classList.add('bg-gray-200','text-gray-700');
+      });
+      if(e && e.currentTarget){
+        e.currentTarget.classList.remove('bg-gray-200','text-gray-700');
+        e.currentTarget.classList.add('bg-ashley-orange','text-white');
+      }
+      updateStepperUI(stepNum);
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+    function nextStep(){ if(currentStep<6) showStep(null,currentStep+1); }
+    function previousStep(){ if(currentStep>1) showStep(null,currentStep-1); }
+
+    // ===== Step tabs (scoped)
+    // Usage: showStepTab(event, stepNumber, tabKey)
+    function showStepTab(e, stepNum, key){
+      const scope = `s${stepNum}-`;
+      // hide all tabs in this step
+      document.querySelectorAll(`[id^="${scope}"][id$="-tab"]`).forEach(t=>t.classList.add('hidden'));
+      // show selected
+      const target = document.getElementById(`${scope}${key}-tab`);
+      if(target) target.classList.remove('hidden');
+      // buttons style (only within this step)
+      document.querySelectorAll(`.${scope.slice(0,-1)}-tab-btn`).forEach(b=>{
+        b.classList.remove('border-ashley-orange','text-ashley-orange');
+        b.classList.add('border-transparent','text-gray-500');
+      });
+      if(e && e.currentTarget){
+        e.currentTarget.classList.add('border-ashley-orange','text-ashley-orange');
+        e.currentTarget.classList.remove('border-transparent','text-gray-500');
+      }
+    }
+
+    // ===== Init
+    document.addEventListener('DOMContentLoaded',()=>{
+      updateTimerDisplay();
+      // Default visible: Home + Step 1 tabs
+      showStep(null,1);
+      showStepTab(null,1,'purpose');
+      showStepTab(null,2,'round1');
+      showStepTab(null,3,'system');
+      showStepTab(null,4,'design');
+      showStepTab(null,5,'format');
+      showStepTab(null,6,'kpi');
+    });
+  </script>
+</body>
+</html>
